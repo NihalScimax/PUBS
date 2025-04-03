@@ -97,7 +97,6 @@ def generate_pdf(pages):
     output_buffer.seek(0)
     return output_buffer
 
-**Streamlit Workflow**
 if uploaded_file is not None and user_query.strip():
     st.markdown("### ⏳ Processing your request... Please wait.")
     with st.spinner("Extracting text..."):
