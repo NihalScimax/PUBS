@@ -5,7 +5,7 @@ import io
 import textwrap
 
 # **Mistral 7B API Endpoint (Replace with your AWS URL)**
-MISTRAL_API_URL = "https://arin.scimaxmi.com/api/input/predict"
+MISTRAL_API_URL = "https://arin.scimaxmi.com/api/input/evaluate"
 
 # **Streamlit Page Configuration**
 st.set_page_config(page_title="AI PDF Query", page_icon="📄", layout="wide")
