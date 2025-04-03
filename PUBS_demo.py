@@ -5,7 +5,7 @@ from fpdf import FPDF
 import io
 
 # **Mistral 7B API Endpoint (Replace with your AWS URL)**
-MISTRAL_API_URL = "https://arin.scimaxmi.com/api/input/predict"
+MISTRAL_API_URL = "https://arin.scimaxmi.com/api/input/evaluate"
 
 # **Streamlit Page Configuration**
 st.set_page_config(page_title="AI PDF Extractor", page_icon="📄", layout="wide")
@@ -129,8 +129,12 @@ def generate_pdf(pages):
         pdf.multi_cell(0, 8, page['content'])
 
     output_buffer = io.BytesIO()
-    pdf.output(output_buffer, "F")
+    
+    # ✅ FIX: Correctly write PDF output to BytesIO
+    pdf_content = pdf.output(dest="S").encode("latin1")  # Convert to byte stream
+    output_buffer.write(pdf_content)
     output_buffer.seek(0)
+
     return output_buffer
 
 # **Streamlit Workflow**
